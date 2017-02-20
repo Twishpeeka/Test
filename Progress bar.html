@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
 <style>
 #progressbar {
   width: 100%;
@@ -15,7 +17,6 @@
 
 </style>
 
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
 <script>
 $(document).ready(function(){
 	$("#firstname").focusout(
@@ -30,22 +31,19 @@ $(document).ready(function(){
 	$(function addprogressbar(percentvalue){
 		var div=$(".progressbar");
 		var progressvalue=progressvalue+percentvalue;
-		div.progressbar({
-			value:10;
+		$(#Pbar).animate({
+			width: progressvalue;
 		});
 		});
-	});
+});		
 
 </script>
 </head>
 <body>
-
 <div class="progressbar" id="progressbar">
 	<div id="Pbar"></div>
 </div><br>
 
-												  
-												  
 Firstname:
 <input type="text" id="firstname" name="firstname" required /><br>
 Lastname:
