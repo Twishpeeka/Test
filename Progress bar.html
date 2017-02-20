@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+#progressbar {
+  width: 100%;
+  background-color: #ddd;
+  height: 50px;
+}
+#Pbar {
+    height: 50px;
+  background-color: #4CAF50;
+}
+
+
+</style>
 
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
 <script>
@@ -26,8 +39,13 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<div class="progressbar" id="progressbar" style="height: 50px;width: 20px;background-color: "#111"></div>
 
+<div class="progressbar" id="progressbar">
+	<div id="Pbar"></div>
+</div><br>
+
+												  
+												  
 Firstname:
 <input type="text" id="firstname" name="firstname" required /><br>
 Lastname:
