@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#firstname").focusout(
+		function()
+		{
+			if($(this).val())
+				addprogressbar(10);
+			else
+				alert("please enter the value");
+		});
+
+	$(function addprogressbar(percentvalue){
+		var div=$(".progressbar");
+		var progressvalue=progressvalue+percentvalue;
+		div.progressbar({
+			value:10;
+		});
+		});
+	});
+
+</script>
+</head>
+<body>
+<div class="progressbar" id="progressbar" style="height: 50px;width: 20px;background-color: "#111"></div>
+
+Firstname:
+<input type="text" id="firstname" name="firstname" required /><br>
+Lastname:
+<input type="text" id="lastname" name="lastname" required><br>
+</form>
+
+
+
+</body>
+</html>
