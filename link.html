@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<style>
+.external{background:url(https://mail.google.com/mail/u/1/?ui=2&ik=dd4592eaf6&view=att&th=15a4b57bae36de95&attid=0.1&disp=safe&realattid=f_iz9lh5k80&zw) top right no-repeat;padding-right:18px}
+</style>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
 <script>
-$('a').each(function() {
-   var a = new RegExp('/' + window.location.host + '/');
-   if(!a.test(this.href)) {
-       $(this).click(function(event) {
-           event.preventDefault();
-           event.stopPropagation();
-           window.open(this.href, '_blank');
-       });
-   }
+$(document).ready(function(){
+$("a[href*='http://']:not([href*='"+location.hostname+"']),[href*='https://']:not([href*='"+location.hostname+"'])")
+.addClass("external")
+.attr("target","_blank");
 });
 </script>
 </head>
+
 <body>
-
-<a href="https://github.com/">Click Me</a>
-
+<p>Plugin for external links. Search for external link on a page and add an icon <a href="http://localhost:8080/test/link.html">Assignment 1</a> next
+to it and on click link, it should open in new tab<a href="https://github.com">Click on link</a>
 </body>
 </html>
