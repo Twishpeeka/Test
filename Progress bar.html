@@ -1,55 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
 
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
 <style>
-#progressbar {
+#myProgress {
   width: 100%;
   background-color: #ddd;
-  height: 50px;
 }
-#Pbar {
-    height: 50px;
+
+#myBar {
+  width: 1%;
+  height: 30px;
   background-color: #4CAF50;
 }
 
-
+form{
+margin-top: 5px;
+    margin-bottom: 5px;
+    height: 30px;
+    width: 350px;
+    font-size: 15px;
+    font-family: Verdana;
+    line-height: 30px;
+    display:inline-block; 
+    vertical-align:middle;
+    
+}
 </style>
-
-<script>
-$(document).ready(function(){
-	$("#firstname").focusout(
-		function()
-		{
-			if($(this).val())
-				addprogressbar(10);
-			else
-				alert("please enter the value");
-		});
-
-	$(function addprogressbar(percentvalue){
-		var div=$(".progressbar");
-		var progressvalue=progressvalue+percentvalue;
-		$("#Pbar").animate({
-			width: progressvalue;
-		});
-		});
-});		
-
-</script>
-</head>
 <body>
-<div class="progressbar" id="progressbar">
-	<div id="Pbar"></div>
-</div><br>
 
-Firstname:
-<input type="text" id="firstname" name="firstname" required /><br>
-Lastname:
-<input type="text" id="lastname" name="lastname" required><br>
+<h1></h1>
+
+<div id="myProgress">
+  <div id="myBar"></div>
+</div>
+
+<br>
+<form>
+Firstname: <input type="text" id="firstname" required/><br>
+Lastname: <input type="text" id="lastname"  required/><br>
+Gender : Male<input type="radio" id="male"  required/>
+Female<input type="radio" id="female"  required/><br>
+Email-ID: <input type="email" pattern="[^ @]*@[^ @]*" id="email"  required/><br>
+State: <input type="text" id="state"  required/><br>
+City: <input type="text" id="city"  required/><br>
+Address Line 1: <input type="text" id="addr1"  required/><br>
+Address Line 2: <input type="text" id="addr2"  required/><br>
+Address Line 3: <input type="text" id="addr3"  required/><br>
+Pincode: <input type="text" id="pincode"  required/><br>
+Contact: <input type="tel" id="tel" pattern="[789][0-9]{9}"  required/><br>
+Course: <input type="text" id="course"  required/><br>
+	<Button type="submit">Submit</Button>
 </form>
 
+<script>
+    $(function(){ 
+    $("input").keyup(function(){ 
+        var $fields = $("input");
+        var count = 0;
+        $fields.each(function(){
+             if($(this).val().length > 0)
+                  count++;
+        });
+                
+         var percentage = Math.floor(count * 100 / $fields.length);
+    
+
+    $("#myBar").css("width", percentage + "%");
+    $(".count").text(percentage + "%");
+    });
+
+   
+});
+</script>
 
 
 </body>
