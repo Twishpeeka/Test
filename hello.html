@@ -2,6 +2,8 @@
 <html>
 <head>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
+  
 <style type="text/css">
    img {size: 10px;}
    section.header {border: solid;border-color: lightgrey; border-radius: 5px 5px 0px 0px; border-width: auto; padding:5px 5px; height: auto; overflow:auto;} 
@@ -38,45 +40,44 @@ li a{
 }
  
 </style>
+
 <script>
 $(document).ready(function(){
-   $("a.tab1").click(function(){
-      $(".form1").show();
+  
+ $("a.tab1").click(function(){
+      $(".form1").css("display","block");
+      $(".form1").siblings().css("display","none");
    });
-   $("a.tab1").click(function(){
-      $(".form2,.form3").hide();
-       });
-   $("a.tab2").click(function(){
-      $(".form2").show();
-   });
-   $("a.tab2").click(function(){
-      $(".form1,.form3").hide();
-       });
-   $("a.tab3").click(function(){
-      $(".form3").show();
-   });
-   $("a.tab3").click(function(){
-      $(".form1,.form2").hide();
-       });
 
-   $("#next1").click(function(){
-   if($(".form1").valid()){
-      $(".form2").show();
-      }
-      });
+ $("a.tab2").click(function(){
+      $(".form2").css("display","block");
+      $(".form2").siblings().css("display","none");
+   });
 
-      $("#next2").click(function(){
-      $(".form3").show();
-      $(".form2").hide();
+
+$("a.tab3").click(function(){
+      $(".form3").css("display","block");
+      $(".form3").siblings().css("display","none");
    });
-    $("#previous").click(function(){
-      $(".form1").show();
-      $(".form2").hide();
-   });
-   
-   $("#sub").click(function(){
-      alert("Success");
-   });
+ 
+$("button").click(function(){
+   $(".mytext").each(function(i){
+           if ($(this).val() != ""){
+          $(this).parent().css("display","none").next().css("display","block");
+        }
+    });
+});
+
+$("#previous").click(function(){
+     $(this).parent().css("display","none").prev().css("display","block");
+  });      
+
+$("#sub").click(function(){
+     alert("Submitted successfully");
+  });      
+
+
+
 });
 
 
@@ -85,40 +86,40 @@ $(document).ready(function(){
 </head>
 
 <body>
-
-<section class="Header">
+<div>
 <ul>
   <li><a class="tab1" href="#tab1">Tab 1</a></li>
   <li><a class="tab2" href="#tab2">Tab 2</a></li>
   <li><a class="tab3" href="#tab3">Tab 3</a></li>
 </ul>
-</section>
 <br>
-<form class="form1">
+</div>
+
+<section class="Header">
+
+<br>
+<form class="form1" style="display: none;">
 Username: 
-<input type="text" id="Username" placeholder="Username" required><br><br>
+<input type="text" id="Username" name="uname" class="mytext" placeholder="Username" required><br><br>
 Password: 
-<input type="password" id="password" name="password" placeholder="Password" required><br><br>
-Email-ID:
-<input type="text" id="email" name="email" placeholder="Email-ID" required><br><br>
-<button id="next1">Next</button>
+<input type="text" id="lastname" name="lname" class="mytext" placeholder="Lastname" required><br><br>
+
+<button id="next1" class="next1" > Next </button>
 </form>   
 
-<form class="form2">
+<form class="form2" style="display: none;">
 Address Type: <br><br>
-<input type="address_line_1" name="Add1" placeholder="Address Line 1" required><br><br>
-<input type="address_line_2" name="Add2" placeholder="Address Line 2" required><br><br>
-<input type="address_line_3" name="Add3" placeholder="Address Line 3" required><br><br>
-Phone Number:
-<input type="Phone" name="ph-no" placeholder="Phone Number"><br><br>
+<input type="text" id="Add1" placeholder="Address Line 1" class="mytext" required><br><br>
+<input type="text" id="Add2" placeholder="Address Line 2" required><br><br>
+
 Gender:<br>
-<input type="radio" name="gender" value="male" checked> Male<br>
-<input type="radio" name="gender" value="female"> Female<br>
-<button id="previous">Previous</button>
+<input type="radio" id="male" name="gender" value="male" checked> Male<br>
+<input type="radio" id="female" name="gender" value="female"> Female<br>
+<input type=submit value="Previous" id="previous">
 <button id="next2">Next</button>
 </form>
 
-<form class="form3">
+<form class="form3" style="display: none;">
 Class:
 <select>
   <option value="X">X</option>
@@ -130,5 +131,9 @@ Subject:
 <input type="subject" name="Subject">
 <input type="submit" name="Submit" id="sub">
 </form>
+
+</section>
+
+
 </body>
 </html>
