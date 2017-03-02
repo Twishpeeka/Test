@@ -1,0 +1,7 @@
+1. SELECT * from cup WHERE color = ""
+
+2. select * from metrics_amount where id NOT IN(SELECT Metrices_id from filled_cups)
+
+3. SELECT * from cup WHERE Id NOT IN(SELECT cup_id FROM filled_cups)
+
+4. SELECT cup.*, sum(m.Amount) AS totalamount from metrics_amount as m , cup, filled_cups as filled where cup.color="blue" && m.Amount<="300" && cup.id IN(select metrices_id from filled_cups) GROUP BY cup.Id ORDER BY m.Amount DESC
