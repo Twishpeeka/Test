@@ -1,0 +1,8 @@
+CHAR_LENGTH : It measures string length in Characters.
+LENGTH : It measures string length in Bytes
+
+CHAR: Char is fixed Length Datatype; Size is equal to size of the column.
+VARCHAR: It is Variable length datatype; It take the length of he data entered.
+
+Float: It is a Single(32 bit) precision floating point data type.
+Double: IT is a Double (64 bit) precision floating point datatype.
